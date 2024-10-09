@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=4 uid="uid://y4y65ghc5cj1"]
+[gd_scene load_steps=3 format=4 uid="uid://y4y65ghc5cj1"]
 
 [ext_resource type="TileSet" uid="uid://cvv4cpd7ynb7t" path="res://resources/world-tileset.tres" id="1_j1s3x"]
 [ext_resource type="PackedScene" uid="uid://b3e7kckq1axq4" path="res://scene/player/player.tscn" id="2_8op7h"]
-[ext_resource type="PackedScene" uid="uid://c375ykyoic2de" path="res://scene/slime/slime.tscn" id="3_ktinn"]
 
 [node name="Level" type="Node"]
 
@@ -12,6 +11,3 @@ tile_set = ExtResource("1_j1s3x")
 
 [node name="Player" parent="." instance=ExtResource("2_8op7h")]
 position = Vector2(583, 306)
-
-[node name="Slime" parent="." instance=ExtResource("3_ktinn")]
-position = Vector2(996, 513)
