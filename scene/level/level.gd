@@ -23,7 +23,7 @@ func _ready():
 	add_child(spawn_timer)
 	spawn_timer.start()
 
-func _process(delta):
+func _process(_delta):
 	pass
 
 func on_spawn_timer_timeout():
