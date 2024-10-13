@@ -8,7 +8,7 @@ script = ExtResource("1_wxr1n")
 attack_ability = ExtResource("2_cq6is")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 1.5
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

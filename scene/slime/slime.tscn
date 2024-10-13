@@ -103,9 +103,9 @@ radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jdk3i"]
 
-[node name="Slime" type="CharacterBody2D"]
+[node name="Slime" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 6
 script = ExtResource("1_xom2v")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -124,6 +124,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="scope"]
+visible = false
 position = Vector2(0, 4)
 scale = Vector2(20, 20)
 shape = SubResource("CircleShape2D_jdk3i")
