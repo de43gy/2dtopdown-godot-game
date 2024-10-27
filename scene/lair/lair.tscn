@@ -1,8 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://c6x1nps2ky43u"]
+[gd_scene load_steps=9 format=3 uid="uid://c6x1nps2ky43u"]
 
 [ext_resource type="Texture2D" uid="uid://dgyres0p2t5t7" path="res://scene/lair/lair_1.png" id="1_0tu2y"]
+[ext_resource type="Script" path="res://scene/lair/lair.gd" id="1_mtd7k"]
 [ext_resource type="Texture2D" uid="uid://po0mepcwbdkb" path="res://scene/lair/lair_2.png" id="2_px2by"]
 [ext_resource type="Texture2D" uid="uid://dl8tg32ba1ywm" path="res://scene/lair/lair_3.png" id="3_lsjw4"]
+[ext_resource type="PackedScene" uid="uid://b3hsaqh2qit7s" path="res://scene/lair_spawner/lair_spawner.tscn" id="5_g23mu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qrcdy"]
+radius = 161.251
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pvrdr"]
 animations = [{
@@ -37,6 +42,13 @@ animations = [{
 radius = 17.0
 
 [node name="Lair" type="CharacterBody2D"]
+script = ExtResource("1_mtd7k")
+
+[node name="scope" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scope"]
+position = Vector2(0, -19)
+shape = SubResource("CircleShape2D_qrcdy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -28)
@@ -48,3 +60,5 @@ frame_progress = 0.892854
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -19)
 shape = SubResource("CircleShape2D_ip25l")
+
+[node name="lair_spawner" parent="." instance=ExtResource("5_g23mu")]

@@ -7,9 +7,16 @@ func _on_timer_timeout() -> void:
 	if player == null:
 		return
 	
+	var player_screen = get_viewport().get_size()
 	var random_direction = Vector2.RIGHT.rotated(randf_range(0, TAU))
-	var random_distance = randi_range(380, 500)
-	var spawn_position = player.global_position + (random_direction * random_distance)
+	var spawn_distance
+
+	if abs(random_direction.x) > abs(random_direction.y):
+		spawn_distance = player_screen.x / 2
+	else:
+		spawn_distance = player_screen.y / 2
+	
+	var spawn_position = player.global_position + (random_direction * spawn_distance)
 	
 	var enemy = slime_scene.instantiate() as Node2D
 	get_parent().add_child(enemy)

@@ -2,14 +2,11 @@ extends CharacterBody2D
 
 var max_speed = 80
 var is_chasing = false
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
+var has_spawner = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
-	if is_chasing:
+	if is_chasing or !has_spawner:
 		var player = get_tree().get_nodes_in_group('player')[0] as Node2D
 		if player:
 			var direction = (player.global_position - global_position).normalized()
