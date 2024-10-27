@@ -8,22 +8,28 @@ func _on_timer_timeout():
 	var player = get_tree().get_first_node_in_group("player") as Node2D
 	if player == null:
 		return
+
+	var player_position = player.global_position
 	
 	var enemyes = get_tree().get_nodes_in_group("enemy")
 	
 	enemyes = enemyes.filter(func(enemy:Node2D):
-		return enemy.global_position.distance_squared_to(player.global_position) < pow(attack_range, 2)
+		return enemy.global_position.distance_squared_to(player_position) < pow(attack_range, 2)
 	)
 	
 	if enemyes.size() == 0:
 		return
 	
 	enemyes.sort_custom(func(a:Node2D, b:Node2D):
-		var a_distance = a.global_position.distance_squared_to(player.global_position)
-		var b_distance = b.global_position.distance_squared_to(player.global_position)
+		var a_distance = a.global_position.distance_squared_to(player_position)
+		var b_distance = b.global_position.distance_squared_to(player_position)
 		return a_distance < b_distance
 	)
+	
+	var enemy_position = enemyes[0].global_position
 
 	var attack_instance = attack_ability.instantiate() as Node2D
 	player.get_parent().add_child(attack_instance)
-	attack_instance.global_position = enemyes[0].global_position
+	attack_instance.global_position = (enemy_position + player_position) / 2
+	
+	attack_instance.look_at(enemy_position)
