@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var max_speed = 80
+var max_speed = 50
 var is_chasing = false
 var has_spawner = false
 

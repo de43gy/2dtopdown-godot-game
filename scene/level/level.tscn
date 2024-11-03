@@ -1,14 +1,21 @@
-[gd_scene load_steps=6 format=4 uid="uid://y4y65ghc5cj1"]
+[gd_scene load_steps=8 format=4 uid="uid://y4y65ghc5cj1"]
 
 [ext_resource type="Script" path="res://scene/level/level.gd" id="1_b4haf"]
 [ext_resource type="TileSet" uid="uid://cvv4cpd7ynb7t" path="res://resources/world-tileset.tres" id="1_j1s3x"]
 [ext_resource type="PackedScene" uid="uid://b3e7kckq1axq4" path="res://scene/player/player.tscn" id="2_8op7h"]
 [ext_resource type="PackedScene" uid="uid://c6x1nps2ky43u" path="res://scene/lair/lair.tscn" id="3_7jue3"]
 [ext_resource type="PackedScene" uid="uid://dhl5680q6fuc4" path="res://scene/enemy_spawner/enemy_spawner.tscn" id="3_s17m7"]
+[ext_resource type="PackedScene" uid="uid://bvgj21bwq3jin" path="res://scene/arena_time_manager/arena_time_manager.tscn" id="4_ndmad"]
+[ext_resource type="PackedScene" uid="uid://ncvthjik8x1o" path="res://scene/arena_time_ui/arena_time_ui.tscn" id="6_jqixp"]
 
 [node name="Level" type="Node"]
 script = ExtResource("1_b4haf")
 lair = ExtResource("3_7jue3")
+
+[node name="ArenaTimeUI" parent="." node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("6_jqixp")]
+arena_time_manager = NodePath("../ArenaTimeManager")
+
+[node name="ArenaTimeManager" parent="." instance=ExtResource("4_ndmad")]
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_s17m7")]
 
