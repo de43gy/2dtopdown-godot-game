@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://c6x1nps2ky43u"]
+
+[ext_resource type="Texture2D" uid="uid://dgyres0p2t5t7" path="res://scenes/environment/lair/lair_1.png" id="1_0tu2y"]
+[ext_resource type="Texture2D" uid="uid://po0mepcwbdkb" path="res://scenes/environment/lair/lair_2.png" id="2_px2by"]
+[ext_resource type="Texture2D" uid="uid://dl8tg32ba1ywm" path="res://scenes/environment/lair/lair_3.png" id="3_lsjw4"]
+[ext_resource type="PackedScene" uid="uid://b3hsaqh2qit7s" path="res://scenes/utilites/lair_spawner/lair_spawner.tscn" id="5_g23mu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qrcdy"]
+radius = 161.251
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pvrdr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0tu2y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_px2by")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_px2by")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lsjw4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_px2by")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_px2by")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_0tu2y")
+}],
+"loop": true,
+"name": &"idli",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ip25l"]
+radius = 17.0
+
+[node name="Lair" type="CharacterBody2D"]
+
+[node name="scope" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="scope"]
+position = Vector2(0, -19)
+shape = SubResource("CircleShape2D_qrcdy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -28)
+sprite_frames = SubResource("SpriteFrames_pvrdr")
+animation = &"idli"
+autoplay = "idli"
+frame_progress = 0.892854
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -19)
+shape = SubResource("CircleShape2D_ip25l")
+
+[node name="lair_spawner" parent="." instance=ExtResource("5_g23mu")]

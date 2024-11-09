@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3hsaqh2qit7s"]
+
+[ext_resource type="Script" path="res://scenes/utilites/lair_spawner/lair_spawner.gd" id="1_67v80"]
+[ext_resource type="PackedScene" uid="uid://c375ykyoic2de" path="res://scenes/entities/slime/slime.tscn" id="2_ebn3o"]
+
+[node name="lair_spawner" type="Node"]
+script = ExtResource("1_67v80")
+slime_scene = ExtResource("2_ebn3o")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

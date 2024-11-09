@@ -1,0 +1,144 @@
+[gd_scene load_steps=18 format=3 uid="uid://c375ykyoic2de"]
+
+[ext_resource type="Texture2D" uid="uid://cwqbu87j8aetb" path="res://assets/textures/Slime.png" id="1_prp1d"]
+[ext_resource type="Script" path="res://scenes/entities/slime/slime.gd" id="1_xom2v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_es5t1"]
+radius = 7.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4j0n4"]
+atlas = ExtResource("1_prp1d")
+region = Rect2(16, 65, 17, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d312j"]
+atlas = ExtResource("1_prp1d")
+region = Rect2(64, 65, 17, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qaeqq"]
+atlas = ExtResource("1_prp1d")
+region = Rect2(112, 65, 17, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eupqs"]
+atlas = ExtResource("1_prp1d")
+region = Rect2(160, 65, 17, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3irs"]
+atlas = ExtResource("1_prp1d")
+region = Rect2(16, 17, 17, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4sl5"]
+atlas = ExtResource("1_prp1d")
+region = Rect2(64, 17, 17, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bin0"]
+atlas = ExtResource("1_prp1d")
+region = Rect2(16, 49, 17, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vtsr"]
+atlas = ExtResource("1_prp1d")
+region = Rect2(64, 49, 17, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l120s"]
+atlas = ExtResource("1_prp1d")
+region = Rect2(112, 49, 17, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odsyp"]
+atlas = ExtResource("1_prp1d")
+region = Rect2(160, 49, 17, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vuhme"]
+atlas = ExtResource("1_prp1d")
+region = Rect2(208, 49, 17, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_au4wt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4j0n4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d312j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qaeqq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eupqs")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3irs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t4sl5")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6bin0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6vtsr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l120s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odsyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vuhme")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wx6if"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jdk3i"]
+
+[node name="Slime" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 6
+script = ExtResource("1_xom2v")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_es5t1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_au4wt")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_wx6if")
+
+[node name="scope" type="Area2D" parent="."]
+position = Vector2(0, -8)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="scope"]
+position = Vector2(0, 4)
+scale = Vector2(20, 20)
+shape = SubResource("CircleShape2D_jdk3i")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="scope" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="scope" to="." method="_on_area_2d_body_exited"]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhl5680q6fuc4"]
+
+[ext_resource type="Script" path="res://scenes/utilites/enemy_spawner/enemy_spawner.gd" id="1_grhtb"]
+[ext_resource type="PackedScene" uid="uid://c375ykyoic2de" path="res://scenes/entities/slime/slime.tscn" id="2_b16qa"]
+
+[node name="EnemySpawner" type="Node"]
+script = ExtResource("1_grhtb")
+slime_scene = ExtResource("2_b16qa")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
