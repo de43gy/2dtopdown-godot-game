@@ -42,7 +42,6 @@ func spawn_lair(position: Vector2):
 	lair_instance.position = position
 	add_child(lair_instance)
 	lair_instance.add_to_group("Lairs")
-	print("Spawned lair at position: ", position)
 
 func get_random_position() -> Vector2:
 	var level_size = get_viewport().size

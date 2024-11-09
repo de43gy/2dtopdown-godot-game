@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://y4y65ghc5cj1"]
+[gd_scene load_steps=10 format=4 uid="uid://y4y65ghc5cj1"]
 
 [ext_resource type="Script" path="res://scenes/main/level/level.gd" id="1_b4haf"]
 [ext_resource type="TileSet" uid="uid://cvv4cpd7ynb7t" path="res://resources/world-tileset.tres" id="1_j1s3x"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c6x1nps2ky43u" path="res://scenes/environment/lair/lair.tscn" id="3_7jue3"]
 [ext_resource type="PackedScene" uid="uid://dhl5680q6fuc4" path="res://scenes/utilites/enemy_spawner/enemy_spawner.tscn" id="3_s17m7"]
 [ext_resource type="PackedScene" uid="uid://bvgj21bwq3jin" path="res://scenes/utilites/arena_time_manager/arena_time_manager.tscn" id="4_ndmad"]
+[ext_resource type="PackedScene" uid="uid://d3u1st4wtuynr" path="res://scenes/utilites/experience_manager/experience_manager.tscn" id="5_0ckon"]
 [ext_resource type="PackedScene" uid="uid://ncvthjik8x1o" path="res://scenes/ui/arena_time_ui/arena_time_ui.tscn" id="6_jqixp"]
 [ext_resource type="PackedScene" uid="uid://bqw5bhxuhy7jg" path="res://scenes/entities/exp_bottle/exp_bottle.tscn" id="8_eqm65"]
 
@@ -17,6 +18,8 @@ lair = ExtResource("3_7jue3")
 arena_time_manager = NodePath("../ArenaTimeManager")
 
 [node name="ArenaTimeManager" parent="." instance=ExtResource("4_ndmad")]
+
+[node name="ExperienceManager" parent="." instance=ExtResource("5_0ckon")]
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_s17m7")]
 

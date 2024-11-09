@@ -7,7 +7,6 @@ func _process(_delta):
 	var target_velocity = max_speed * calc_direction()
 	
 	velocity = velocity.lerp(target_velocity, acceleration)
-	print(velocity)
 	move_and_slide()
 
 func calc_direction ():

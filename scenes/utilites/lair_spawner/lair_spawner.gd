@@ -8,7 +8,6 @@ var slime_max_count = 15
 var slimes = []
 
 func _on_timer_timeout() -> void:
-	print(slimes.size())
 	if slimes.size() < slime_max_count:
 		spawn_slime()
 
